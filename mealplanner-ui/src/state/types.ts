@@ -1,6 +1,6 @@
 import { MealPlansQuery$data } from "../pages/MealPlans/__generated__/MealPlansQuery.graphql";
 import { SearchMeal_data$data } from "../pages/MealPlans/__generated__/SearchMeal_data.graphql";
-import { MealsQuery$data } from "../pages/Meals/__generated__/MealsQuery.graphql";
+import { MealsDataQuery$data } from "../pages/Meals/__generated__/MealsDataQuery.graphql";
 export type SearchedMeal = Exclude<
   Exclude<SearchMeal_data$data["meals"], null>["nodes"],
   null
@@ -15,6 +15,6 @@ export type MealPlanNode = Exclude<
 >;
 
 export type MealNode = Exclude<
-  Exclude<Exclude<MealsQuery$data["meals"], null>["nodes"], null>[number],
+  Exclude<Exclude<MealsDataQuery$data["meals"], null>["nodes"], null>[number],
   null
 >;

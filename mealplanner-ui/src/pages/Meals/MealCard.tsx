@@ -7,7 +7,7 @@ import { MealNode } from "../../state/types";
 import { RefetchFnDynamic } from "react-relay";
 import { OperationType } from "relay-runtime";
 import { setSelectedFavMeals } from "../../state/state";
-import { MealsQuery$data } from "./__generated__/MealsQuery.graphql";
+import { MealsDataQuery$data } from "./__generated__/MealsDataQuery.graphql";
 import { addFavoriteMeal } from "./AddFavoriteMeal";
 import { removeFavoriteMeal } from "./RemoveFavoriteMeal";
 
@@ -28,7 +28,7 @@ interface ExpandMoreProps extends IconButtonProps {
   
 interface MealProps {
    node: MealNode;
-   refetch: RefetchFnDynamic<OperationType, MealsQuery$data>;
+   refetch: RefetchFnDynamic<OperationType, MealsDataQuery$data>;
    selectedFavs:  readonly string[];
   };
 

@@ -9,45 +9,15 @@ import {
   RadioGroup,
   Select
 } from "@mui/material";
-import { graphql } from "babel-plugin-relay/macro";
-import {Suspense, useEffect, useState } from "react";
-import { useLazyLoadQuery, useRefetchableFragment } from "react-relay";
+import {Suspense, useState } from "react";
+import { useRefetchableFragment } from "react-relay";
 import { MealTags } from "./MealTags";
-import { MealsQuery } from "./__generated__/MealsQuery.graphql";
 import { MealCard } from "./MealCard";
 import { getCurrentPerson } from "../../state/state";
 import { GetAllPeopleInfo } from "../../state/state";
 import { FavoriteMeals, FavoriteMealsFragment } from "./PersonFavoriteMeals";
 import { useNavigate } from "react-router-dom";
-
-const mealsQuery = graphql`
-  query MealsQuery($slug: String!)  {
-    meals(orderBy: [ID_DESC], first: 1000) {
-      nodes {
-        rowId
-        nameEn
-        nameFr
-        descriptionEn
-        descriptionFr
-        categories
-        tags
-        code
-        photoUrl
-        videoUrl
-      }
-    }
-    # fragment name from MealTags
-    ...MealTags_tags
-    gqLocalState {
-      selectedMealTags
-    }
-    # fragment name from PersonFavoriteMeals
-    ...PersonFavoriteMeals_favorites @arguments(slug: $slug)
-    gqLocalState {
-      selectedFavoriteMeals
-    }
-  }
-`;
+import { MealsData } from "./MealsData";
 
 type FavoriteMeals = {
   people: {
@@ -70,19 +40,13 @@ type FavoriteMeals = {
 export const Meals = () => {
   const [searchMeal, setSearchMeal] = useState<string>("");
   const [searchType, setSearchType] = useState('name');
-  const slug = getCurrentPerson().personSlug;
-  const navigate = useNavigate();
-
 
   let peopleData = GetAllPeopleInfo();
-  const data = useLazyLoadQuery<MealsQuery>(
-    mealsQuery,
-    {slug: slug as string},
-    { fetchPolicy: "store-or-network" }
-  );
-
+  const navigate = useNavigate();
+  const data = MealsData();
+    
   const handleMenuItemClick = (personSlug: string) => {
-    navigate(`/meals/${personSlug}/favorites`,{ state: data })
+    navigate(`/meals/${personSlug}/favorites`)
   };
 
   const [_, refetch] = useRefetchableFragment(FavoriteMealsFragment, data);
@@ -169,7 +133,7 @@ export const Meals = () => {
    
     {searchType === 'favorites' &&
         <Suspense fallback={"loading favorites..."}>
-        <FavoriteMeals slug={slug} favs={data}/>
+        <FavoriteMeals />
       </Suspense>
     }
     {data.meals ? (
