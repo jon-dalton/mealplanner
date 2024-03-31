@@ -55,5 +55,7 @@ $$ language plpgsql;
 -- Grant execute permission to appropriate roles
 grant select, insert, delete, update on app.favorite_meals to app_user, app_meal_designer, app_admin;
 grant usage on sequence app.favorite_meals_id_seq to app_user, app_meal_designer, app_admin;
+grant execute on function app.add_favorite_meal(bigint) to app_user,app_admin,app_meal_designer;
+grant execute on function app.remove_favorite_meal(bigint) to app_user,app_admin,app_meal_designer;
 
 commit;

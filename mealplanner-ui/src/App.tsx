@@ -1,7 +1,7 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Suspense, useEffect, useState } from "react";
 import { RelayEnvironmentProvider } from "react-relay";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import { Layout } from "./layouts/Layout";
 import { LoggedIn } from "./LoggedIn";
@@ -14,6 +14,7 @@ import { ShoppingList } from "./pages/ShoppingList";
 import environment from "./relay/environment";
 import { fetchCurrentPerson, initState } from "./state/state";
 import { FavoriteMeals } from "./pages/Meals/PersonFavoriteMeals";
+import { PersonFavoriteMeals_favorites$key } from "./pages/Meals/__generated__/PersonFavoriteMeals_favorites.graphql";
 
 const theme = createTheme({
   palette: {
@@ -44,6 +45,9 @@ initState();
 
 function App() {
   let [intialized, setInitialized] = useState(false);
+  const location = useLocation();
+  const favs = location.state as PersonFavoriteMeals_favorites$key;
+  
   useEffect(() => {
     fetchCurrentPerson().then(() => {
       setInitialized(true);
@@ -108,15 +112,15 @@ function App() {
                 </Suspense>
               }
             />
-            {/* <Route path={`/meals/:slug/favorites`}
+            <Route path={`/meals/:slug/favorites`}
               element={
                 <Suspense fallback={"loading favorite meals.."}>
                   <LoggedIn>
-                    <FavoriteMeals />
+                     <FavoriteMeals favs={favs} />
                   </LoggedIn>
                 </Suspense>
               }
-            /> */}
+            />
             <Route
               path="/"
               element={

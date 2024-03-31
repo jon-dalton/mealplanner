@@ -1,9 +1,10 @@
 import { graphql } from "babel-plugin-relay/macro";
 import { useRefetchableFragment, useFragment } from "react-relay";
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
 import { MealCard } from "./MealCard";
 import { PersonFavoriteMeals_favorites$key } from "./__generated__/PersonFavoriteMeals_favorites.graphql";
+import { useParams } from "react-router-dom";
 
 export const FavoriteMealsFragment = graphql`
 fragment PersonFavoriteMeals_favorites on Query
@@ -39,14 +40,15 @@ fragment PersonFavoriteMeals_favorites on Query
 }
 `;
 
-export const FavoriteMeals = ({ favs }: { favs: PersonFavoriteMeals_favorites$key }) => {
-  const PFMeals = useFragment(FavoriteMealsFragment, favs);
-  const favMeals = PFMeals.people?.nodes[0].favoriteMeals.nodes;
-    favMeals?.map(favMeal => {
-      console.log('fav Meals', favMeal.meal);
- })
+export const FavoriteMeals = ({ slug, favs }: {slug?:string, favs: PersonFavoriteMeals_favorites$key} ) => {
+  const [meals, refetch] = useRefetchableFragment(FavoriteMealsFragment, favs);
+  const params = useParams();
+  slug = slug? slug: params.slug;
+  useEffect(() => {
+    refetch({ slug: slug });
+  },[slug]);
+  const favMeals = meals.people?.nodes[0].favoriteMeals.nodes;
   const selectedFavs: string[] = favMeals?.map(favMeal => favMeal.meal?.rowId) || [];
-  const [_, refetch] = useRefetchableFragment(FavoriteMealsFragment, favs);
 
   return (
      <React.Fragment>

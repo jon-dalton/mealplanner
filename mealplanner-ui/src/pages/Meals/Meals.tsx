@@ -10,7 +10,7 @@ import {
   Select
 } from "@mui/material";
 import { graphql } from "babel-plugin-relay/macro";
-import {Suspense, useState } from "react";
+import {Suspense, useEffect, useState } from "react";
 import { useLazyLoadQuery, useRefetchableFragment } from "react-relay";
 import { MealTags } from "./MealTags";
 import { MealsQuery } from "./__generated__/MealsQuery.graphql";
@@ -18,6 +18,7 @@ import { MealCard } from "./MealCard";
 import { getCurrentPerson } from "../../state/state";
 import { GetAllPeopleInfo } from "../../state/state";
 import { FavoriteMeals, FavoriteMealsFragment } from "./PersonFavoriteMeals";
+import { useNavigate } from "react-router-dom";
 
 const mealsQuery = graphql`
   query MealsQuery($slug: String!)  {
@@ -48,13 +49,6 @@ const mealsQuery = graphql`
   }
 `;
 
-type MealNode = {
-  meal: {
-  rowId: string;
-  name_en: string;
-  }
-};
-
 type FavoriteMeals = {
   people: {
     nodes: {
@@ -77,6 +71,8 @@ export const Meals = () => {
   const [searchMeal, setSearchMeal] = useState<string>("");
   const [searchType, setSearchType] = useState('name');
   const slug = getCurrentPerson().personSlug;
+  const navigate = useNavigate();
+
 
   let peopleData = GetAllPeopleInfo();
   const data = useLazyLoadQuery<MealsQuery>(
@@ -84,10 +80,15 @@ export const Meals = () => {
     {slug: slug as string},
     { fetchPolicy: "store-or-network" }
   );
+
+  const handleMenuItemClick = (personSlug: string) => {
+    navigate(`/meals/${personSlug}/favorites`,{ state: data })
+  };
+
   const [_, refetch] = useRefetchableFragment(FavoriteMealsFragment, data);
 
   const PFMeals =  useRefetchableFragment(FavoriteMealsFragment, data)[0] as FavoriteMeals;
-  const selectedFavs = PFMeals.people?.nodes[0].favoriteMeals.nodes.map((favMeal:MealNode) => favMeal.meal?.rowId) || [];
+  const selectedFavs = PFMeals.people?.nodes[0].favoriteMeals.nodes.map((favMeal) => favMeal.meal?.rowId) || [];
 
   const selectedTags = data.gqLocalState.selectedMealTags || [];
 
@@ -144,7 +145,7 @@ export const Meals = () => {
             <InputLabel>Select any User</InputLabel>
             <Select>
             {peopleData?.people?.nodes.map(person => (
-               <MenuItem key={person.rowId} value={person.role}>{person.fullName}</MenuItem> 
+               <MenuItem key={person.rowId} value={person.role} onClick={()=>handleMenuItemClick(person.slug)}>{person.fullName}</MenuItem> 
             ))} 
             </Select>
           </FormControl>
@@ -168,7 +169,7 @@ export const Meals = () => {
    
     {searchType === 'favorites' &&
         <Suspense fallback={"loading favorites..."}>
-        <FavoriteMeals favs={data}/>
+        <FavoriteMeals slug={slug} favs={data}/>
       </Suspense>
     }
     {data.meals ? (
