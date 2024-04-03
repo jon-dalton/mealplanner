@@ -107,7 +107,7 @@ export const Meals = () => {
         {searchType === 'favorites' && (getCurrentPerson().personRole === 'app_admin' || getCurrentPerson().personRole === 'app_meal_designer') && (
             <FormControl style={{ width: '20%' }}>
             <InputLabel>Select any User</InputLabel>
-            <Select>
+            <Select label="Select any User">
             {peopleData?.people?.nodes.map(person => (
                <MenuItem key={person.rowId} value={person.role} onClick={()=>handleMenuItemClick(person.slug)}>{person.fullName}</MenuItem> 
             ))} 
