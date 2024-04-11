@@ -32,7 +32,7 @@ const mealsDataQuery = graphql`
   }
 `;
 
-export const MealsData = () => {
+export const useMealsData = () => {
   const slug = getCurrentPerson().personSlug;
   const data = useLazyLoadQuery<MealsDataQuery>(
     mealsDataQuery,

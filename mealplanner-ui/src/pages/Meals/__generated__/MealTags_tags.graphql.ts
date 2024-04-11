@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<72218c9242b191257a80348b3e262521>>
+ * @generated SignedSource<<29d4bc35cdb105947c4c1f27d780d225>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,14 +11,14 @@
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type MealTags_tags$data = {
+  readonly gqLocalState: {
+    readonly selectedMealTags: ReadonlyArray<string> | null;
+  };
   readonly allMealTags: {
     readonly edges: ReadonlyArray<{
-      readonly node: string | null | undefined;
+      readonly node: string | null;
     }>;
-  } | null | undefined;
-  readonly gqLocalState: {
-    readonly selectedMealTags: ReadonlyArray<string> | null | undefined;
-  };
+  } | null;
   readonly " $fragmentType": "MealTags_tags";
 };
 export type MealTags_tags$key = {
