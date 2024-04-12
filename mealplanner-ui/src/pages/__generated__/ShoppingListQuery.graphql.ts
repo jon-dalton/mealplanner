@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4752f18d7eb5968d99563ab017c942ad>>
+ * @generated SignedSource<<2e0ef71f8bf18453e48cbda643744083>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -35,6 +35,7 @@ export type ShoppingListQuery$data = {
                 readonly nodes: ReadonlyArray<{
                   readonly id: string;
                   readonly nameEn: string;
+                  readonly price: any;
                 }>;
               };
             }>;
@@ -164,7 +165,14 @@ v6 = {
                   "plural": true,
                   "selections": [
                     (v5/*: any*/),
-                    (v2/*: any*/)
+                    (v2/*: any*/),
+                    {
+                      "alias": null,
+                      "args": null,
+                      "kind": "ScalarField",
+                      "name": "price",
+                      "storageKey": null
+                    }
                   ],
                   "storageKey": null
                 }
@@ -299,16 +307,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c42487ea51876793539cf26f96be5205",
+    "cacheID": "130a7a96b9d719a3b7c9215c7a35955a",
     "id": null,
     "metadata": {},
     "name": "ShoppingListQuery",
     "operationKind": "query",
-    "text": "query ShoppingListQuery(\n  $rowId: BigInt!\n) {\n  mealPlan(rowId: $rowId) {\n    nameEn\n    descriptionEn\n    person {\n      fullName\n      id\n    }\n    mealPlanEntries {\n      nodes {\n        meal {\n          id\n          nameEn\n          ingredients {\n            nodes {\n              id\n              name\n              quantity\n              unit\n              productKeyword\n              matchedProducts {\n                nodes {\n                  id\n                  nameEn\n                }\n              }\n            }\n          }\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query ShoppingListQuery(\n  $rowId: BigInt!\n) {\n  mealPlan(rowId: $rowId) {\n    nameEn\n    descriptionEn\n    person {\n      fullName\n      id\n    }\n    mealPlanEntries {\n      nodes {\n        meal {\n          id\n          nameEn\n          ingredients {\n            nodes {\n              id\n              name\n              quantity\n              unit\n              productKeyword\n              matchedProducts {\n                nodes {\n                  id\n                  nameEn\n                  price\n                }\n              }\n            }\n          }\n        }\n        id\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "82874f9edef57f9d05e207ff6658c152";
+(node as any).hash = "7523bcd6e3a4adc111c4a3ff1e3a307f";
 
 export default node;
