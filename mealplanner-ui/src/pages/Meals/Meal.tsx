@@ -11,10 +11,10 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { graphql } from "babel-plugin-relay/macro";
+import React from "react";
 import { useLazyLoadQuery } from "react-relay";
 import { useParams } from "react-router";
 import { MealQuery } from "./__generated__/MealQuery.graphql";
-import React, { useEffect } from "react";
 
 const mealQuery = graphql`
   query MealQuery($mealId: BigInt!) {
@@ -223,10 +223,11 @@ export const Meal = () => {
         </Typography>
       </Box>
       <Container maxWidth="lg" sx={{ marginTop: "1em" }}>
-        <Grid container spacing={2} rowSpacing={4}>
+        <Grid container spacing={2} rowSpacing={4} marginTop={1}>
           <Grid
             item
             xs={3}
+            
             sx={{ textAlign: "center", displayPrint: "none" }}
             bgcolor={theme.palette.grey[200]}
           >
@@ -253,7 +254,11 @@ export const Meal = () => {
             )}
           </Grid>
 
-          <Grid item xs={9} bgcolor={theme.palette.grey[200]} style={{position:'relative', minHeight:'100vh'}}>
+          <Grid item xs={9} bgcolor={theme.palette.grey[200]} style={{position:'relative'}}  sx={{
+          // Use CSS @media rule to set min-height based on print or not
+          "@media print": {
+            minHeight: "100vh"}}
+          }>
             <Typography variant="h3">
               {meal?.nameEn}
               <IconButton
