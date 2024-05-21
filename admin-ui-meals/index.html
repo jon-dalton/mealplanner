@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Meals - Mealplanner (Good Meal Plan) Guide</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Meals";
+        var mkdocs_page_input_path = "admin-ui-meals.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Mealplanner (Good Meal Plan) Guide
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Front End</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../login/">Login</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../logout/">Logout</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../create-a-mealplan/">Create a Mealplan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../create-a-meal-template/">Create a Meal Template</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../create-mealplan-from-template/">Create a Mealplan from a Template</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../delete-a-mealplan/">Delete a Mealplan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mealplanner-ui-meals/">Finding Meals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../view-shopping-list/">View Shopping List</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Admin UI</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../nutrition1/">Nutrition</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Meals</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#meals-admin-ui">Meals (Admin-Ui)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#11-creating-a-meal">1.1 Creating a Meal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#12-viewing-a-meal">1.2 Viewing a Meal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview_1">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-editing-a-meal">1.3 Editing a Meal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview_2">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#13-deleting-a-meal">1.3 Deleting a Meal</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#overview_3">Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#additional-notes">Additional Notes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Mealplanner (Good Meal Plan) Guide</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Admin UI</li>
+      <li class="breadcrumb-item active">Meals</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mealplanner-goodmealplan-website-documentation">MealPlanner (GoodMealPlan) Website Documentation</h1>
+<h2 id="meals-admin-ui">Meals (Admin-Ui)</h2>
+<h3 id="11-creating-a-meal">1.1 Creating a Meal</h3>
+<h3 id="overview">Overview</h3>
+<p>Creating a meal allows Admins to create new meals/recipes, which the users can view or add to their meal plan. 
+To create a meal, please follow the steps below:</p>
+<p><strong>Steps to Create a Meal</strong></p>
+<ol>
+<li>
+<p><strong>Navigate to the Meal Plan Products Admin Page</strong></p>
+<ul>
+<li>Open your web browser and go to GoodMealPlan
+If you're not already logged in, sign in to your account
+Once logged in, you'll be directed to the new page from left pane select products list. Note: You must be an Admin to create a Meal.</li>
+</ul>
+</li>
+<li>
+<p><strong>Select the Meal tab.</strong></p>
+<ul>
+<li>Click the Meal tab on the top left sidebar of the admin-ui page of the MealPlanner app, similar to the screenshot below. </li>
+</ul>
+</li>
+<li>
+<p><strong>Click the Create button</strong></p>
+<ul>
+<li>Click the <code>Create</code> button in the top right part of the admin-ui page. </li>
+</ul>
+</li>
+</ol>
+<p><img alt="Create Meal" src="../create-meal.jpeg" /></p>
+<ol>
+<li><strong>Add the Meal details and Create the Meal</strong><ul>
+<li>Enter the Name of the meal in English or/and French.</li>
+<li>Enter the Code for the meal.</li>
+<li>Enter the necessary tags for the Meal.</li>
+<li>Enter a relevant description for the meal in English or/and French.</li>
+<li>Select the relevant Categories (Breakfast/Lunch/Dinner/Snack) for the Meal.</li>
+<li>Enter a Photo and Video url or link for the meal.</li>
+<li>Enter the relevant Cook time, Prep time for the meal.</li>
+<li>Enter the Portions, Total cost, and the Serving cost for the meal.</li>
+<li>Enter the serving size unit and Nutrition rating for the meal.</li>
+<li>Enter the method description for the meal.</li>
+<li>Enter any relevant Tips for the meal.</li>
+<li>Click Save to Creat the Meal.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Meal Entry Fields" src="../meal-entry-fields.jpeg" /></p>
+<h3 id="12-viewing-a-meal">1.2 Viewing a Meal</h3>
+<h3 id="overview_1">Overview</h3>
+<p>Viewing a meal allows admin to view the necessary details about the meal. 
+To view a meal, please follow the steps below:</p>
+<p><strong>Steps to View a Meal</strong></p>
+<ol>
+<li>
+<p><strong>Navigate to the Meal Plan Products Admin Page</strong></p>
+<ul>
+<li>Open your web browser and go to GoodMealPlan
+If you're not already logged in, sign in to your account
+Once logged in, you'll be directed to the new page from left pane select products list. </li>
+</ul>
+</li>
+<li>
+<p><strong>Select the Meal tab.</strong></p>
+<ul>
+<li>Click the Meal tab on the top left sidebar of the admin-ui page of the MealPlanner app, similar to the screenshot below. </li>
+</ul>
+</li>
+<li>
+<p><strong>Search for a meal by its name.</strong></p>
+<ul>
+<li>On the Search column of the admin page for the MealPlanner app, search for the meal by its name.</li>
+</ul>
+</li>
+<li>
+<p><strong>View the Meal</strong></p>
+<ul>
+<li>Click the drop-down arrow.</li>
+<li>Click the Show button to view the meal.</li>
+<li>Click the necessary tabs (Method, Summary, Nutrition and ingredients) if needed to view those sections of a meal.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="View a Meal" src="../view-a-meal.jpeg" /></p>
+<h3 id="13-editing-a-meal">1.3 Editing a Meal</h3>
+<h3 id="overview_2">Overview</h3>
+<p>Editing a meal allows the admin to change relevant specifications of a meal if needed. 
+To edit a meal, please follow the steps below:</p>
+<p><strong>Steps to View a Meal</strong></p>
+<ol>
+<li>
+<p><strong>Navigate to the Meal Plan Products Admin Page</strong></p>
+<ul>
+<li>Open your web browser and go to GoodMealPlan
+If you're not already logged in, sign in to your account
+Once logged in, you'll be directed to the new page from left pane select products list. </li>
+</ul>
+</li>
+<li>
+<p><strong>Select the Meal tab.</strong></p>
+<ul>
+<li>Click the Meal tab on the top left sidebar of the admin-ui page of the MealPlanner app, similar to the screenshot below. </li>
+</ul>
+</li>
+<li>
+<p><strong>Search for a meal by its name.</strong></p>
+<ul>
+<li>On the Search column of the admin page for the MealPlanner app, search for the meal by its name.</li>
+</ul>
+</li>
+<li>
+<p><strong>Edit the Meal</strong></p>
+<ul>
+<li>Click the drop-down arrow.</li>
+<li>Click the Edit button to view the meal.</li>
+<li>Out of all available columns, make the necessary changes.</li>
+<li>Click the Save button in the bottom of the page to save the changes.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="View a Meal" src="../view-a-meal.jpeg" /></p>
+<h3 id="13-deleting-a-meal">1.3 Deleting a Meal</h3>
+<h3 id="overview_3">Overview</h3>
+<p>Deleting a meal allows an admin to delete a meal if needed. 
+To delete a meal, please follow the steps below:</p>
+<p><strong>Steps to View a Meal</strong></p>
+<ol>
+<li>
+<p><strong>Navigate to the Meal Plan Products Admin Page</strong></p>
+<ul>
+<li>Open your web browser and go to GoodMealPlan
+If you're not already logged in, sign in to your account
+Once logged in, you'll be directed to the new page from left pane select products list. </li>
+</ul>
+</li>
+<li>
+<p><strong>Select the Meal tab.</strong></p>
+<ul>
+<li>Click the Meal tab on the top left sidebar of the admin-ui page of the MealPlanner app, similar to the screenshot below. </li>
+</ul>
+</li>
+<li>
+<p><strong>Search for a meal by its name.</strong></p>
+<ul>
+<li>On the Search column of the admin page for the MealPlanner app, search for the meal by its name.</li>
+</ul>
+</li>
+<li>
+<p><strong>Delete the Meal</strong></p>
+<ul>
+<li>Click on the checkbox on the right side of the drop-down arrow</li>
+<li>Click the red-colored <code>Delete</code> button on the top right of the admin page. </li>
+</ul>
+</li>
+</ol>
+<p><img alt="Checkbox" src="../checkbox.jpeg" /></p>
+<p><img alt="Delete a Meal" src="../delete-a-meal.jpeg" /></p>
+<h3 id="additional-notes">Additional Notes</h3>
+<p>For any questions or assistance, please contact your administrator</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../nutrition1/" class="btn btn-neutral float-left" title="Nutrition"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../nutrition1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
