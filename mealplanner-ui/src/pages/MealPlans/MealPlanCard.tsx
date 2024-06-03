@@ -151,7 +151,7 @@ export const MealPlanCard = (props: MealPlanCardProps) => {
                     aria-label="duplicate"
                     onClick={(e) => {
                       e.stopPropagation();
-                      duplicateMealPlan(connection, mealplan.rowId);
+                      duplicateMealPlan(connection, mealplan.rowId,getCurrentPerson().personID);
                     }}
                     sx={{ "& :hover": { color: theme.palette.primary.main } }}
                   >

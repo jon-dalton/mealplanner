@@ -3,8 +3,8 @@ import { commitMutation } from "relay-runtime";
 import environment from "../../relay/environment";
 
 const duplicateMealPlanGQL = graphql`
-mutation DuplicateMealPlanMutation($connections: [ID!]!, $mealPlanId: BigInt!) {
-    duplicateMealPlan(input: {mealplanId: $mealPlanId}) {
+mutation DuplicateMealPlanMutation($connections: [ID!]!, $mealPlanId: BigInt!, $personId:BigInt!) {
+    duplicateMealPlan(input: {mealplanId: $mealPlanId, personId: $personId}) {
         mealPlanEdge @prependEdge(connections: $connections) {
             cursor
             node {
@@ -12,6 +12,7 @@ mutation DuplicateMealPlanMutation($connections: [ID!]!, $mealPlanId: BigInt!) {
               rowId
               nameEn
               nameFr
+              personId
               descriptionEn
               descriptionFr
               person {
@@ -33,12 +34,13 @@ mutation DuplicateMealPlanMutation($connections: [ID!]!, $mealPlanId: BigInt!) {
 `;
 
 
-export const duplicateMealPlan = (connection: string, id:string) => {
+export const duplicateMealPlan = (connection: string, id:string, pId:string) => {
     commitMutation(environment, {
       mutation: duplicateMealPlanGQL,
       variables: {
         connections: [connection],
         mealPlanId: id.toString(),
+        personId: pId.toString(),
       },
       onCompleted(response, errors) {
         console.log(response);
