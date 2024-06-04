@@ -46,7 +46,7 @@ export const Details = () => {
           <NumberField source="cookTime" />
           <NumberField source="totalCost" />
           <NumberField source="servingCost" />
-          <TextField source="tips" />
+          <RichTextField source="tips" />
           <NumberField source="servingsSize" />
           <TextField source="servingsSizeUnit" />
           <NumberField source="portions" />
