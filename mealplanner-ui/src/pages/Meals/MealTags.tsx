@@ -40,8 +40,18 @@ export const MealTags = ({ tags }: { tags: MealTags_tags$key }) => {
   return (
     <Grid container direction="column" margin="0rem 2rem">
       <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', width: '100%' }}>
-        {mealTags.allMealTags?.edges.map((edge, index) => {
-          const node = edge?.node;
+        {mealTags.allMealTags?.edges.map( edge => edge?.node).filter(node => node !== null && node !== undefined).sort((a,b) => {
+
+          if (a===null || b===null){
+            return 0;
+          }
+          else{
+            return a.localeCompare(b);
+          }
+        }
+        
+        ).map((edge, index) => {
+          const node = edge;
           if (node !== null && node !== undefined) {
             return (
               <Chip
